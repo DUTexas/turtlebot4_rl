@@ -254,11 +254,14 @@ void Navigation::Run() {
   // Feel free to make helper functions to structure the control appropriately.
 
   // The latest observed point cloud is accessible via "point_cloud_"
+  if (!anyGoalsInProgress())
+  {
+      StartDriveDistanceAction(0.5, 0.1, std::chrono::milliseconds(1000));
+  }
 
   // Eventually, you will have to set the control values to issue drive commands:
   // You can call StartDriveDistanceAction, StartDriveArcAction, or StartRotateAngleAction
   // and then wait for the status
-
   // You should also check that it's not stuck due to ros communication errors by keeping track of how much time
   // has elapsed since your request
 
